@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — GooWiFi</title>
+<meta name="description" content="Pertanyaan yang sering ditanyakan seputar internet GooWiFi: biaya pemasangan, upgrade paket, lama instalasi, dan kontrak berlangganan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: { 950:'#060E24', 900:'#0B1736', 800:'#13234C', 700:'#1C3163' },
+          lime: { 300:'#C6F24D', 400:'#9FE000', 500:'#7AB800' },
+          amber: { 400:'#FFC700' },
+          off: '#F6F8FB',
+          ink: { 900:'#101B36', 500:'#5B6B8C' }
+        },
+        fontFamily: {
+          display: ['Sora','sans-serif'],
+          body: ['"Plus Jakarta Sans"','sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family:'Plus Jakarta Sans',sans-serif; }
+  .font-display { font-family:'Sora',sans-serif; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid #9FE000;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  .dot-grid {
+    background-image: radial-gradient(rgba(159,224,0,0.18) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .reveal-active { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+
+  .accordion-content { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+  .accordion-open .accordion-content { max-height: 240px; }
+  .accordion-chevron { transition: transform .3s ease; }
+  .accordion-open .accordion-chevron { transform: rotate(180deg); }
+</style>
+</head>
+<body class="bg-off text-ink-900 antialiased">
+
+<!-- NAV -->
+<header class="sticky top-0 z-50 bg-navy-900/95 backdrop-blur border-b border-white/5">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2.5">
+      <span class="w-9 h-9 rounded-full bg-lime-400 flex items-center justify-center flex-shrink-0">
+        <svg viewBox="0 0 24 24" class="w-5 h-5 text-navy-900" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <circle cx="12" cy="18.5" r="1.2" fill="currentColor" stroke="none"/>
+          <path d="M6.5 14a7.8 7.8 0 0 1 11 0"/>
+          <path d="M3 10a12.2 12.2 0 0 1 18 0" opacity=".55"/>
+        </svg>
+      </span>
+      <span class="font-display font-extrabold text-white text-lg tracking-tight">GooWiFi</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-white/80">
+      <a href="keunggulan.html" class="hover:text-lime-400 transition-colors">Keunggulan</a>
+      <a href="paket.html" class="hover:text-lime-400 transition-colors">Paket</a>
+      <a href="pemasangan.html" class="hover:text-lime-400 transition-colors">Pemasangan</a>
+      <a href="bayar-tagihan.html" class="hover:text-lime-400 transition-colors">Bayar Tagihan</a>
+      <a href="faq.html" class="text-lime-400">FAQ</a>
+      <a href="kontak.html" class="hover:text-lime-400 transition-colors">Kontak</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="paket.html" class="hidden sm:inline-flex bg-lime-400 hover:bg-lime-300 text-navy-900 font-bold text-sm px-4 py-2 rounded-full transition-colors">Daftar Sekarang</a>
+      <button id="menuBtn" class="md:hidden text-white p-2" aria-label="Buka menu">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-white/5 bg-navy-900 px-5 pb-4 pt-2 flex flex-col gap-3 text-white/85 font-semibold text-sm">
+    <a href="keunggulan.html" class="py-1">Keunggulan</a>
+    <a href="paket.html" class="py-1">Paket</a>
+    <a href="pemasangan.html" class="py-1">Pemasangan</a>
+    <a href="bayar-tagihan.html" class="py-1">Bayar Tagihan</a>
+    <a href="faq.html" class="py-1 text-lime-400">FAQ</a>
+    <a href="kontak.html" class="py-1">Kontak</a>
+    <a href="paket.html" class="bg-lime-400 text-navy-900 text-center font-bold py-2.5 rounded-full mt-1">Daftar Sekarang</a>
+  </div>
+</header>
+
+<!-- PAGE HEADER -->
+<section class="relative bg-navy-900 overflow-hidden">
+  <div class="absolute inset-0 dot-grid opacity-50"></div>
+  <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-14 sm:py-16 text-center">
+    <span class="inline-flex items-center gap-2 bg-white/5 border border-lime-400/30 text-lime-300 text-xs font-bold tracking-wide px-3.5 py-1.5 rounded-full">FAQ</span>
+    <h1 class="font-display font-extrabold text-white text-3xl sm:text-4xl mt-4">Pertanyaan yang Sering Ditanyakan</h1>
+    <p class="text-white/60 mt-3 max-w-lg mx-auto">Belum ketemu jawabannya? Hubungi tim kami langsung via WhatsApp.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bg-white py-20">
+  <div class="max-w-3xl mx-auto px-5 sm:px-8">
+    <div id="faq-list" class="space-y-3"></div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="bg-navy-900 relative overflow-hidden">
+  <div class="absolute inset-0 dot-grid opacity-40"></div>
+  <div class="relative max-w-4xl mx-auto px-5 sm:px-8 py-16 text-center">
+    <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-white">Masih Ada yang Ingin Ditanyakan?</h2>
+    <p class="text-white/60 mt-3 max-w-md mx-auto">Tim GooWiFi siap bantu jawab pertanyaanmu kapan saja.</p>
+    <div class="flex flex-wrap justify-center gap-3 mt-7">
+      <a href="https://wa.me/6288272275458?text=Halo%20GooWiFi%2C%20saya%20punya%20pertanyaan." target="_blank" class="bg-lime-400 hover:bg-lime-300 text-navy-900 font-bold px-6 py-3.5 rounded-full transition-colors">Chat WhatsApp</a>
+      <a href="kontak.html" class="border border-white/20 hover:border-lime-400 text-white font-bold px-6 py-3.5 rounded-full transition-colors">Hubungi Kami</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-navy-950 text-white/70 pt-16 pb-8">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div class="col-span-2 lg:col-span-1">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <span class="w-9 h-9 rounded-full bg-lime-400 flex items-center justify-center flex-shrink-0">
+          <svg viewBox="0 0 24 24" class="w-5 h-5 text-navy-900" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <circle cx="12" cy="18.5" r="1.2" fill="currentColor" stroke="none"/>
+            <path d="M6.5 14a7.8 7.8 0 0 1 11 0"/>
+            <path d="M3 10a12.2 12.2 0 0 1 18 0" opacity=".55"/>
+          </svg>
+        </span>
+        <span class="font-display font-extrabold text-white text-lg">GooWiFi</span>
+      </a>
+      <p class="text-sm mt-3 max-w-xs">Internet Cepat, Hidup Hebat. Layanan internet rumah dari PT. Megaraap Metra Solusi Dolcta.</p>
+    </div>
+
+    <div>
+      <h4 class="text-white font-bold text-sm mb-3">Navigasi</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="index.html" class="hover:text-lime-400">Beranda</a></li>
+        <li><a href="keunggulan.html" class="hover:text-lime-400">Keunggulan</a></li>
+        <li><a href="paket.html" class="hover:text-lime-400">Paket</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="text-white font-bold text-sm mb-3">Layanan</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="pemasangan.html" class="hover:text-lime-400">Syarat Pemasangan</a></li>
+        <li><a href="bayar-tagihan.html" class="hover:text-lime-400">Bayar Tagihan</a></li>
+        <li><a href="faq.html" class="hover:text-lime-400">FAQ</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="text-white font-bold text-sm mb-3">Kontak</h4>
+      <ul class="space-y-2 text-sm mb-3">
+        <li><a href="https://wa.me/6288272275458" target="_blank" class="hover:text-lime-400">WhatsApp 0882-7227-5458</a></li>
+        <li><a href="kontak.html" class="hover:text-lime-400">Info Kontak Lengkap</a></li>
+      </ul>
+      <div class="flex gap-3">
+        <a href="https://www.tiktok.com/@goowifi.metro.id" target="_blank" aria-label="TikTok" class="w-9 h-9 rounded-full bg-white/5 hover:bg-lime-400 hover:text-navy-900 flex items-center justify-center transition-colors">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8a4.5 4.5 0 0 1-2.6-2.6h-2.8v12.4a2.6 2.6 0 1 1-1.9-2.5v-2.9a5.5 5.5 0 1 0 4.7 5.4V9.5a7.3 7.3 0 0 0 4.2 1.3V7.9a4.5 4.5 0 0 1-1.6-2.1z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/goowifi.metro.id_" target="_blank" aria-label="Instagram" class="w-9 h-9 rounded-full bg-white/5 hover:bg-lime-400 hover:text-navy-900 flex items-center justify-center transition-colors">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.facebook.com/goowifi" target="_blank" aria-label="Facebook" class="w-9 h-9 rounded-full bg-white/5 hover:bg-lime-400 hover:text-navy-900 flex items-center justify-center transition-colors">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.2c0-.9.3-1.5 1.6-1.5h1.4V5.1c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4v2h-2.4v3h2.4v7h3.4z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 mt-10 pt-6 border-t border-white/10 text-xs text-white/40">
+    © <span id="year"></span> GooWiFi — Internet Cepat, Hidup Hebat. PT. Megaraap Metra Solusi Dolcta.
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/6288272275458?text=Halo%20GooWiFi%2C%20saya%20ingin%20tanya%20soal%20internet." target="_blank"
+   class="fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-lime-400 hover:bg-lime-300 shadow-xl flex items-center justify-center transition-transform hover:scale-105"
+   aria-label="Chat WhatsApp">
+  <svg class="w-7 h-7 text-navy-900" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .9.9-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.8c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-1.3-.6-2.1-1.1-3-2.5-.2-.3 0-.4.1-.6l.4-.5c.1-.2.1-.4 0-.5-.1-.2-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.6 1.1 2.8c.1.2 1.8 2.8 4.5 3.8 2.2.8 2.6.6 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.4-.3z"/></svg>
+</a>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+  function setupReveal() {
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-active');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    els.forEach(el => io.observe(el));
+  }
+
+  // ---- DATA (edit di sini untuk ubah konten) ----
+  const faqs = [
+    { q:'Apakah ada biaya pemasangan?', a:'Tidak. Pemasangan baru GooWiFi gratis untuk semua paket, termasuk biaya teknisi dan perangkat dasar.' },
+    { q:'Apakah saya bisa upgrade paket kapan saja?', a:'Bisa. Kamu bisa naik atau turun paket kapan saja melalui WhatsApp tanpa biaya tambahan, efektif di periode tagihan berikutnya.' },
+    { q:'Berapa lama proses pemasangan setelah daftar?', a:'Rata-rata pemasangan selesai dalam 1-3 hari kerja setelah survei lokasi, tergantung jangkauan jaringan di area kamu.' },
+    { q:'Apakah ada kontrak minimum berlangganan?', a:'Tidak ada kontrak mengikat jangka panjang. Kamu bisa berhenti berlangganan kapan saja dengan pemberitahuan sebelumnya.' }
+  ];
+
+  function renderFAQ() {
+    const list = document.getElementById('faq-list');
+    list.innerHTML = faqs.map((item, i) => `
+      <div class="reveal border border-navy-900/10 rounded-xl overflow-hidden" data-faq style="transition-delay:${i * 70}ms">
+        <button class="faq-toggle w-full flex items-center justify-between gap-4 text-left px-5 py-4 font-display font-bold text-navy-900 hover:bg-off transition-colors">
+          <span>${item.q}</span>
+          <svg class="accordion-chevron w-5 h-5 flex-shrink-0 text-lime-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="accordion-content px-5">
+          <p class="text-ink-500 text-sm pb-4">${item.a}</p>
+        </div>
+      </div>
+    `).join('');
+
+    list.querySelectorAll('.faq-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const parent = btn.closest('[data-faq]');
+        const wasOpen = parent.classList.contains('accordion-open');
+        list.querySelectorAll('[data-faq]').forEach(el => el.classList.remove('accordion-open'));
+        if (!wasOpen) parent.classList.add('accordion-open');
+      });
+    });
+  }
+
+  renderFAQ();
+  setupReveal();
+</script>
+</body>
+</html>
